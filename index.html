@@ -8,20 +8,32 @@
     <title>DinoAPI</title>
 </head>
 <body>
-    <h3>Nombre</h3>
-    <input type="text" id="">
-    <h3>Habitat</h3>
-    <input type="text" id="">
-    <h3>Periodo</h3>
-    <input type="text" id="">
-    <h3>Tamaño y peso</h3>
-    <input type="text" id="">
-    <input type="numero" id="">
-    <h3>Dieta</h3>
-    <input type="text" id="">
-    <h3>Caracteristicas</h3>
-    <textarea name="Desc" id="" cols="30" rows="10"></textarea>
-    <h3>Imagen</h3>
-    <input type="text" id="" style="width: 900px;">
+
+
+    <form name="datos" action="conexion.php" method="post">
+        <h3>Nombre</h3>
+        <input type="text" style="width: 900px;" id="" name="name">
+        <h3>Habitat</h3>
+        <input type="text" style="width: 900px;" id="" name="Habitat">
+        <h3>Periodo</h3>
+        <input type="text" style="width: 900px;" id="" name="Periodo">
+        <h3>Tamaño y peso</h3>
+        <input type="text" style="width: 900px;" id="" name="Sise">
+        <h3>Dieta</h3>
+        <input type="text" id="" name="Dieta"> 
+        <h3>Caracteristicas</h3>
+        <input type="text" style="width: 900px;" id="" name="Caracte">
+        <h3>Descripcion</h3>
+        <textarea name="Desc" id="" cols="30" rows="10"></textarea>
+        <h3>Imagen</h3>
+        <input type="text" id="" style="width: 1200px;" name="Url">
+
+
+        
+        <br>
+        <input class="btn-blue" type="submit" name="register" value="Registrar">
+    </form>
+
+
 </body>
 </html>
