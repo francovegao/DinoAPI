@@ -22,8 +22,10 @@ const Dino = sequelize.define('Dino', {
     },
     description:{
         type: DataTypes.TEXT()
+    },
+    image:{
+        type: DataTypes.CHAR(128)
     }
-
 });
 
 module.exports = Dino;
