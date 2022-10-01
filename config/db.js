@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('sqlite://db.sqlite');
+// const sequelize = new Sequelize('sqlite://db.sqlite');
 
 // Conexión a DB externa (Render)
 // const sequelize = 
