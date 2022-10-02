@@ -1,3 +1,6 @@
+//Dotenv
+require('dotenv').config()
+
 // Activamos Express
 const express = require('express');
 
