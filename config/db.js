@@ -8,25 +8,30 @@ const { Sequelize } = require('sequelize');
 // Conexión a DB externa (Render)
 
 const sequelize = 
-new Sequelize({
-    database: process.env.DB,
-    username: process.env.USER,
-    password: process.env.PASS,
-    host: process.env.HOST,
-    port: process.env.PORT,
-    dialect: 'postgresql'
-}
+new Sequelize(
+    
 );
 
 
 //  const sequelize = 
 //  new Sequelize({
-//         host: process.env.HOST,
+//         hostname: process.env.HOST,
 //         port: process.env.PORT,
 //         username: process.env.USER,
 //         password: process.env.PASS,
 //         database: process.env.DB,
-//         dialect: 'postgresql'
+//         dialect: 'postgres',
+//         port: '5432'
 //  });
+
+
+ sequelize.authenticate()
+  .then(() => {
+    console.log('SUPER Conectado')
+  })
+  .catch(err => {
+    console.log('No se conecto')
+  })
+
 
 module.exports = sequelize; 
