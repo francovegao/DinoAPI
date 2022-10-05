@@ -29,5 +29,5 @@ try{
 }
 
 app.listen(process.env['PORT'] || 3030, ()=> {
-    console.log("Server listing on PORT 3000");
+    console.log("Server listing on PORT", process.env['PORT']);
 });
