@@ -1,4 +1,7 @@
+// Llamamos al Router de Express
 const router = require('express').Router();
+
+// Llamamos a las funciones
 const {
         getDino,
         getDinos,

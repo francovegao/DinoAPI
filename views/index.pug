@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        link(rel="icon", href="../ICON/dibujo.png")
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title DinoAPI
+    body 
+        form(action="/dinos" method="post") 
+            h3 Nombre
+            input(type="text" style="width: 900px;" id="" name="name")
+            h3 Habitat
+            input(type="text" style="width: 900px;" id="" name="habitat")
+            h3 Periodo
+            input(type="text" style="width: 900px;" id="" name="historicalPeriod")
+            h3 Tamaño y peso
+            input(type="text" style="width: 900px;" id="" name="sizeAndWeight")
+            h3 Dieta
+            input(type="text" id="" name="diet") 
+            h3 Caracteristicas
+            input(type="text" style="width: 900px;" id="" name="characteristics")
+            h3 Descripcion
+            textarea(name="description" id="" cols="100" rows="10")
+            h3 Imagen
+            input(type="text" id="" style="width: 1200px;" name="image")
+            input(class="btn-blue" type="submit" value="Registrar")

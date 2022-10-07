@@ -2,7 +2,7 @@ const router = require('express').Router();
 const dinos = require('./dinos');
 
 router.get('/', (req, res) => {
-    res.json({'info': 'Welcome to DinoAPI!'})
+    res.render('index')
 });
 
 router.use('/dinos', dinos);
