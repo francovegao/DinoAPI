@@ -1,0 +1,14 @@
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        title Entrar
+    body 
+        h1 Login
+        form(action="/users/login" method="POST")
+            label Usuario 
+            input(type="text" name="username")
+            label Contraseña
+            input(type="password" name="password")
+            input(type="submit" value="Entrar")
+        h3 Error en usuario o contraseña, intenta de nuevo

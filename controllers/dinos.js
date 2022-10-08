@@ -28,7 +28,7 @@ async function getDinoNames(req, res) {
     const name = req.params.name;
     const dino = await Dino.findOne({
       where: {
-        name: name,
+        name: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + name.toLowerCase() + '%')
       },
     });
     res.status(200).json(dino);

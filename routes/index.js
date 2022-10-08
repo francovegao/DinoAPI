@@ -7,6 +7,14 @@ router.get('/', (req, res) => {
     res.render('index')
 });
 
+router.get('/users', (req, res) => {
+    res.render('login')
+});
+
+router.get('/users/signup', (req, res) => {
+    res.render('signup')
+});
+
 router.use('/dinos', dinos);
 router.use('/dinos/aleatorio/', getDinoNames);
 router.use('/dinos/nombre/:name', getDinoNames);

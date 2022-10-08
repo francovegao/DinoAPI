@@ -8,7 +8,8 @@ async function signUp(req, res) {
         user.password_salt = salt;
         user.password_hash = hash;
         await user.save();
-        res.status(201).json(user);
+        return res.render('form');
+        // res.status(201).json(user);
     } catch (err) {
         if (['SequelizeValidationError', 'SequelizeUniqueConstraintError'].includes(err.name)) {
             return res.status(400).json({
@@ -27,14 +28,16 @@ async function logIn(req, res) {
         return res.status(400).json({ error: 'Usuario no encontrado' })
     }
     if (User.validatePassword(body['password'], user.password_salt, user.password_hash)) {
-        return res.status(200).json({
-            user: user.username,
-            email: user.email,
-            role: user.role,
-            token: User.generateJWT(user)
-        });
+        return res.render('form')
+        // res.status(200).json({
+        //     user: user.username,
+        //     email: user.email,
+        //     role: user.role,
+        //     token: User.generateJWT(user)
+        // });
     } else 
-    return res.status(400).json({ mensaje: 'Contraseña incorrecta' })
+    return res.render('invalid')
+    // res.status(400).json({ mensaje: 'Contraseña incorrecta' })
 }
 
 module.exports = { signUp, logIn }
