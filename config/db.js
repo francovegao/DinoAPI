@@ -1,11 +1,25 @@
+//Dotenv
+require('dotenv').config()
+
 const { Sequelize } = require('sequelize');
 
-// const sequelize = new Sequelize('sqlite://db.sqlite');
+// Conexión a la DB externa
+const sequelize = new Sequelize(process.env['DATABASE_URL'], 
+    {dialectOptions: {
+        ssl: {
+            require:true,
+            rejectUnauthorized: false
+        }
+    }}
+);
 
-// Conexión a DB externa (Render)
-const sequelize = 
-new Sequelize(
-    'PG_DB' // Aquí va la URI de la base de datos
-    )
+// Autenticamos la conexión
+sequelize.authenticate()
+  .then(() => {
+    console.log('Connected Succesfully')
+})
+  .catch(err => {
+    console.log('Not connected')
+})
 
-module.exports = sequelize; 
+module.exports = sequelize;
