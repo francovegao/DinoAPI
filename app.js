@@ -10,6 +10,9 @@ const sequelize = require('./config/db');
 // Llamamos a las rutas
 const routes = require('./routes');
 
+// Llamamos al Auth
+const auth = require('./config/auth');
+
 //Swagger config
 const swaggerOptions = require('./config/swagger');
 const swaggerJsDoc = require('swagger-jsdoc');
@@ -18,13 +21,14 @@ const swaggerUI = require('swagger-ui-express');
 // Definimos el uso de Express y de las rutas
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended:true }))
+app.use(express.urlencoded({ extended: true }))
 app.use('/', routes);
+app.use(auth.optional)
 
 // Cargamos la vista del formulario
 app.set('view engine', 'pug');
 
-//swagger config
+// Configuramos Swagger
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 

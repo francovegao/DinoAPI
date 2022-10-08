@@ -7,6 +7,7 @@ const { Sequelize } = require('sequelize');
 
 //Conexión a DB externa (Render)
 
+// Conexión a la DB externa
 const sequelize = new Sequelize(process.env['DATABASE_URL'], 
     {dialectOptions: {
         ssl: {
@@ -16,14 +17,13 @@ const sequelize = new Sequelize(process.env['DATABASE_URL'],
     }}
 ); 
 
-
- sequelize.authenticate()
+// Autenticamos la conexión
+sequelize.authenticate()
   .then(() => {
-    console.log('SUPER Conectado')
-  })
+    console.log('Connected Succesfully')
+})
   .catch(err => {
-    console.log('No se conecto')
-  })
+    console.log('Not connected')
+})
 
-
-module.exports = sequelize; 
+module.exports = sequelize;
