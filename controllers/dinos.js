@@ -37,7 +37,6 @@ async function getDinoNames(req, res) {
 //Leer varios dinos por búsqueda de nombre
 async function getDinoByLetter(req, res) {
     const name = req.params.name;
-    console.log(name)
     const dino = await Dino.findAll({
         limit: 5,
         where: {
