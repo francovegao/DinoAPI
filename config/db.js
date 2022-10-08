@@ -2,8 +2,10 @@
 require('dotenv').config()
 
 const { Sequelize } = require('sequelize');
+//conexion local
 //const sequelize = new Sequelize('sqlite://db.sqlite');
-// Conexión a DB externa (Render)
+
+//Conexión a DB externa (Render)
 
 const sequelize = new Sequelize(process.env['DATABASE_URL'], 
     {dialectOptions: {
@@ -12,7 +14,7 @@ const sequelize = new Sequelize(process.env['DATABASE_URL'],
             rejectUnauthorized: false
         }
     }}
-);
+); 
 
 
  sequelize.authenticate()
