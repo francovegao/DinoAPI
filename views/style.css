@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+body {
+    text-align: center;
+    background-color: #24303c;
+}
+
 .registro {
     width: 600px;
     background-color: #24303c;

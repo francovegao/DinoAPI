@@ -1,6 +1,7 @@
 // Importamos los modelos
-const Dino = require('../models/dinos');
+const { Op } = require("sequelize");
 const sequelize = require("../config/db");
+const Dino = require('../models/dinos');
 
 // Creando Dino
 function createDino(req, res){
@@ -29,6 +30,19 @@ async function getDinoNames(req, res) {
       where: {
         name: name,
       },
+    });
+    res.status(200).json(dino);
+}
+
+//Leer varios dinos por búsqueda de nombre
+async function getDinoByLetter(req, res) {
+    const name = req.params.name;
+    console.log(name)
+    const dino = await Dino.findAll({
+        limit: 5,
+        where: {
+            name: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + name.toLowerCase() + '%')
+      }
     });
     res.status(200).json(dino);
   }
@@ -74,6 +88,7 @@ module.exports = {
 	getDinos,
     getDinoNames,
     getDinoRandom,
+    getDinoByLetter,
 	updateDino,
 	deleteDino,
 };
