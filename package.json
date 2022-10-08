@@ -2,13 +2,13 @@
   "name": "dinoapi",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.js", 
   "scripts": {
     "start": "node ./app.js",
     "dev": "nodemon ./app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
+  "repository": { 
     "type": "git",
     "url": "git+https://github.com/francovegao/DinoAPI.git"
   },
@@ -26,6 +26,8 @@
     "pg-hstore": "^2.3.4",
     "pug": "^3.0.2",
     "sequelize": "^6.23.1",
-    "sqlite3": "^5.1.1"
+    "sqlite3": "^5.1.1",
+    "swagger-jsdoc": "^6.2.5",
+    "swagger-ui-express": "^4.5.0"
   }
 }
