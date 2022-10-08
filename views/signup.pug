@@ -1,0 +1,19 @@
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        title Nuevo usuario
+    body 
+        h1 Crea tu cuenta
+        form(action="/users/signup" method="POST")
+            label Usuario 
+            input(type="text" name="username")
+            br
+            label Correo electrónico
+            input(type="email" name="email")
+            br
+            label Contraseña
+            input(type="password" name="password")
+            br
+            input(type="text" name="role" value="member" style="display: none;")
+            input(type="submit" value="Entrar")
