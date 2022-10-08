@@ -3,13 +3,43 @@ const router = require('express').Router();
 
 // Llamamos a las funciones
 const {
+        createDino,
         getDino,
         getDinos,
-        createDino,
+        getDinoNames,
+        getDinoRandom,
         updateDino,
         deleteDino
 }= require('../controllers/dinos')
 
+// Para crear un Dino
+router.post('/', createDino);
+/**
+ * @swagger
+ * /dinos:
+ *     post:
+ *       summary: Crear dinosaurio
+ *       description: Agregar nuevo dinosaurio
+ *       operationId: createDino
+ *       consumes:
+ *       - application/json
+ *       produces:
+ *       - application/json
+ *       parameters: 
+ *       - in: body
+ *         name: body
+ *         description: Objeto que contiene al dinosaurio que sera agregado
+ *         required: true
+ *         schema:
+ *           $ref: '#/definitions/dino'
+ *       responses:
+ *         201:
+ *           description: Creado correctamente
+ *           type: json
+ */ 
+
+// Para obtener todos los Dinos
+router.get('/', getDinos);
 /**
  * @openapi
  * /dinos:
@@ -22,8 +52,14 @@ const {
  *           description: Todos los dinosauros disponibles
  *           type: json
  */
-router.get('/', getDinos);
- /**
+
+/// FALTA DOC DE ESTOS DOS ///
+router.get('/random/', getDinoRandom);
+router.get('/dinos/n/:name', getDinoNames);
+
+/// Obtener dinosaurio por ID ///
+router.get('/dinos/i/:id', getDino)
+/**
  * @openapi
  * /dinos/{id}:
  *     get:
@@ -51,31 +87,10 @@ router.get('/', getDinos);
  *         404:
  *           description: Dinosaurio no encontrado     
  */
-router.get('/:id', getDino);
-/**
- * @swagger
- * /dinos:
- *     post:
- *       summary: Crear dinosaurio
- *       description: Agregar nuevo dinosaurio
- *       operationId: createDino
- *       consumes:
- *       - application/json
- *       produces:
- *       - application/json
- *       parameters: 
- *       - in: body
- *         name: body
- *         description: Objeto que contiene al dinosaurio que sera agregado
- *         required: true
- *         schema:
- *           $ref: '#/definitions/dino'
- *       responses:
- *         201:
- *           description: Creado correctamente
- *           type: json
- */ 
-router.post('/', createDino);
+
+
+/// Para actualizar un dinosaurio ///
+router.patch('/:id', updateDino);
 /**
  * @openapi
  * /dinos/{id}:
@@ -107,7 +122,9 @@ router.post('/', createDino);
  *         404:
  *           description: dinosaurio no encontrado
  */
-router.patch('/:id', updateDino);
+
+/// Para eliminar un dinosaurio ///
+router.delete('/:id', deleteDino);
 /**
  * @openapi
  * /dinos/{id}:
@@ -133,8 +150,9 @@ router.patch('/:id', updateDino);
  *         404: 
  *           description: Dinosaurio no encontrado
  */
-router.delete('/:id', deleteDino);
 
+
+/// Ejemplo de cómo se obtiene a un dinosaurio ///
 /**
  * @openapi
  *definitions: 
@@ -167,5 +185,6 @@ router.delete('/:id', deleteDino);
  *    xml:
  *      name: dino
  */
+
 
 module.exports = router;

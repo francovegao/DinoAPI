@@ -1,5 +1,6 @@
 // Importamos los modelos
 const Dino = require('../models/dinos');
+const sequelize = require("../config/db");
 
 // Creando Dino
 function createDino(req, res){
@@ -13,6 +14,32 @@ function createDino(req, res){
 async function getDino(req, res){
     const id = req.params.id;
     const dino = await Dino.findByPk(id);
+
+    if (dino) {
+        res.status(200).json(dino);
+    } else  {
+        res.status(404).end();
+    }
+}
+
+//Leer un solo Dino, por NAME
+async function getDinoNames(req, res) {
+    const name = req.params.name;
+    const dino = await Dino.findOne({
+      where: {
+        name: name,
+      },
+    });
+    res.status(200).json(dino);
+  }
+  
+  
+//Leer random
+async function getDinoRandom(req, res) {
+    const dino = await Dino.findAll({
+        order: sequelize.random(),
+        limit: 1,
+    });
     res.status(200).json(dino);
 }
 
@@ -26,7 +53,7 @@ async function getDinos(req, res){
 async function updateDino(req, res){
     const id = req.params.id;
     const dino = req.body;
-    await Dino.update(dino, {where: {id}});
+    await Dino.update(dino, { where: { id } });
     const dino_updated = await Dino.findByPk(id);
     res.status(200).json(dino_updated);
 }
@@ -35,7 +62,7 @@ async function updateDino(req, res){
 async function deleteDino(req, res){
     const id= req.params.id;
     const deleted = Dino.destroy({
-        where: {id}
+        where: { id }
     });
     res.status(200).json(deleted);
 }
@@ -45,6 +72,8 @@ module.exports = {
 	createDino,
 	getDino,
 	getDinos,
+    getDinoNames,
+    getDinoRandom,
 	updateDino,
 	deleteDino,
 };

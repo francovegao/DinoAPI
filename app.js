@@ -18,13 +18,13 @@ const swaggerUI = require('swagger-ui-express');
 // Definimos el uso de Express y de las rutas
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended:true }))
+app.use(express.urlencoded({ extended: true }))
 app.use('/', routes);
 
 // Cargamos la vista del formulario
 app.set('view engine', 'pug');
 
-//swagger config
+// Configuramos Swagger
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
@@ -37,11 +37,6 @@ try{
     console.log('Unable to connect to DB:', error);
 }
 
-app.listen(process.env['PORT'] || 3000, ()=> {
-  console.log("Server listing on PORT", process.env['PORT']);
+app.listen(process.env['PORT'] || 3000, () => {
+  console.log("Server listening on PORT", process.env['PORT']);
 });
-
-/* const PORT = 3000;
-app.listen(PORT, ()=> {
-    console.log("Server listing on PORT 3000");
-}); */
