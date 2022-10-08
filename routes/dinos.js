@@ -8,12 +8,15 @@ const {
         getDinos,
         getDinoNames,
         getDinoRandom,
+        getDinoByLetter,
         updateDino,
         deleteDino
 }= require('../controllers/dinos')
 
+const auth = require('../config/auth')
+
 // Para crear un Dino
-router.post('/', createDino);
+router.post('/', [auth.isMember || auth.isAdmin], createDino);
 /**
  * @swagger
  * /dinos:
@@ -54,11 +57,12 @@ router.get('/', getDinos);
  */
 
 /// FALTA DOC DE ESTOS DOS ///
-router.get('/random/', getDinoRandom);
-router.get('/dinos/n/:name', getDinoNames);
+router.get('/aleatorio/', getDinoRandom);
+router.get('/dinos/nombre/:name', getDinoNames);
+router.get('/dinos/letras/:name', getDinoByLetter);
 
 /// Obtener dinosaurio por ID ///
-router.get('/dinos/i/:id', getDino)
+router.get('/dinos/id/:id', getDino)
 /**
  * @openapi
  * /dinos/{id}:
@@ -90,7 +94,7 @@ router.get('/dinos/i/:id', getDino)
 
 
 /// Para actualizar un dinosaurio ///
-router.patch('/:id', updateDino);
+router.patch('/:id', auth.isAdmin, updateDino);
 /**
  * @openapi
  * /dinos/{id}:
@@ -124,7 +128,7 @@ router.patch('/:id', updateDino);
  */
 
 /// Para eliminar un dinosaurio ///
-router.delete('/:id', deleteDino);
+router.delete('/:id', auth.isAdmin, deleteDino);
 /**
  * @openapi
  * /dinos/{id}:

@@ -1,37 +1,25 @@
 doctype html
 html
     head
-        link(rel="icon", href="../ICON/dibujo.png")
-        link(rel="stylesheet" href="./style.css")
+        link(rel="icon", type="image/png", href="./ICON/dibujo.png")
+        link(rel="stylesheet", href="/style.css")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title DinoAPI
-    body 
-        form(action="/dinos" method="post" class="registro") 
-            h4 Registro de Dinosaurio
-            input(type="text" class="control" id="" 
-            name="name" placeholder="Ingrese Nombre")
-        
-            input(type="text" class="control" id="" 
-            name="habitat" placeholder="Ingrese Habitad")
-        
-            input(type="text" class="control" id="" 
-            name="historicalPeriod" placeholder="Ingrese Periodo")
-            
-            input(type="text" class="control" id="" 
-            name="sizeAndWeight" placeholder="Ingrese Tamaño y peso")
-
-            input(type="text" class="control" id="" 
-            name="diet" placeholder="Ingrese Dieta") 
-            
-            input(type="text" class="control" id="" 
-            name="characteristics" placeholder="Ingrese Caracteristicas")
-            
-            textarea(class="control" name="description" 
-            id="" cols="60" rows="10" placeholder="Ingrese Descripción")
-    
-            input(type="text" class="control" id="" 
-            name="image" placeholder="Seleccione Imagen")
-            
-            input(class="boton" type="submit" value="Registrar")
+    body
+        h2 ¡Bienvenido a la DinoAPI!
+        p En esta página encontrarás las instrucciones para utilizar la API.
+        h3(class="cursiva") Mostrar un dinosaurio aleatorio
+        p Para mostrar la información deu un dinosaurio al azar, solo debes utilizar la siguiente URL: 
+        p https://dinoapi.onrender.com/dinos/aleatorio
+        h3(class="cursiva") Buscar dinosaurios por nombre
+        p Con esta función puedes buscar dinosaurios escribiendo unas cuantas letras para encontrar coincidencias:
+        p https://dinoapi.onrender.com/dinos/letras/NOMBRE_A_BUSCAR
+        h3(class="cursiva") Buscar dinosaurios por nombre exacto
+        p Si ya sabes exactamente cuál es el nombre del dinosario, puedes buscarlo de esta forma:
+        p https://dinoapi.onrender.com/dinos/nombre/NOMBRE_A_BUSCAR
+        h3(class="cursiva") Buscar dinosaurios por id 
+        p Supongamos que quieres encontrar un dinosaurio por la id, solo debes ingresar 
+        p https://dinoapi.onrender.com/dinos/id/ID
+        p El número del final es el id. La DinoAPI se encuentra en crecimiento, así que por el momento solamente puedes encontrar 69 dinosaurios
