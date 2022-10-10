@@ -1,18 +1,20 @@
 doctype html
 html
     head
-        link(rel="icon", type="image/png", href="./ICON/dibujo.png")
-        link(rel="stylesheet", href="/style.css")
+        meta(http-equiv="Content-Type" content="text/html")
         meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="icon", type="image/png", href="./ICON/dibujo.png")
+        link(rel="stylesheet", href="./views/style.css")
         title DinoAPI
     body
         h2 ¡Bienvenido a la DinoAPI!
         p En esta página encontrarás las instrucciones para utilizar la API.
+        h3(class="cursiva") Ver el listado completo de dinosaurios 
+        p Con esta URL llamas a todo el listado de dinosaurios disponibles: 
+        p https://dinoapi.onrender.com/dinos/
         h3(class="cursiva") Mostrar un dinosaurio aleatorio
-        p Para mostrar la información deu un dinosaurio al azar, solo debes utilizar la siguiente URL: 
-        p https://dinoapi.onrender.com/dinos/aleatorio
+        p Para mostrar la información de un dinosaurio al azar, solo debes utilizar la siguiente URL: 
+        p https://dinoapi.onrender.com/dinos/aleatorio/
         h3(class="cursiva") Buscar dinosaurios por nombre
         p Con esta función puedes buscar dinosaurios escribiendo unas cuantas letras para encontrar coincidencias:
         p https://dinoapi.onrender.com/dinos/letras/NOMBRE_A_BUSCAR
